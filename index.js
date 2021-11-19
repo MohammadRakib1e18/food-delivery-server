@@ -45,6 +45,12 @@ async function run() {
             const getOrders = await cursor.toArray();
             res.send(getOrders);
         });
+
+        app.post("/productAdded", async (req, res) => {
+            const product = req.body;
+            const result = await serviceCollection.insertOne(product);
+            res.json({ result });
+        });
     } finally {
         // await client.close();
     }
