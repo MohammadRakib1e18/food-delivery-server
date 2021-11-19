@@ -45,10 +45,10 @@ async function run() {
         });
 
         // GET to get all orders.
-        app.get("/order", async (req, res) => {
+        app.get("/allOrders", async (req, res) => {
             const cursor = orderCollection.find({});
             const services = await cursor.toArray();
-            res.send(services);
+            res.json(services);
         });
 
         app.post("/productAdded", async (req, res) => {
