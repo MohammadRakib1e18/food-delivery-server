@@ -45,7 +45,7 @@ async function run() {
         });
 
         // GET to get all orders.
-        app.get("/services", async (req, res) => {
+        app.get("/order", async (req, res) => {
             const cursor = orderCollection.find({});
             const services = await cursor.toArray();
             res.send(services);
