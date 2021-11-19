@@ -23,7 +23,7 @@ async function run(){
             const cursor = serviceCollection.find({});
             const services = await cursor.toArray();
             // console.log(services);
-            res.send(services);
+            res.json(services);
         })
         // // POST Api
         // app.post('/services', async(req, res)=>{
