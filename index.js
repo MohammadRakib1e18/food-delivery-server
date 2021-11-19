@@ -25,13 +25,16 @@ async function run(){
             // console.log(services);
             res.json(services);
         })
-        // // POST Api
-        // app.post('/services', async(req, res)=>{
-        //     const service = req.body;
-        //     const result = await serviceCollection.insertOne(service);
-        //     console.log(result);
-        //     res.json(result);
-        // })
+        
+        const orderCollection = database.collection("order");
+
+        // POST API
+        app.post("/order", async (req, res) => {
+            const order = req.body;
+            const result = await orderCollection.insertOne(order);
+            console.log(result);
+            res.json({ result });
+        });
 
     }
     finally{
