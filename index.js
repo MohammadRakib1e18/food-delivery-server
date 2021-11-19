@@ -34,16 +34,21 @@ async function run() {
         app.post("/order", async (req, res) => {
             const order = req.body;
             const result = await orderCollection.insertOne(order);
-            console.log(result);
             res.json({ result });
         });
         app.get("/order", async (req, res) => {
             const email = req.query.email;
             const query = { email: email };
-            console.log(query);
             const cursor = orderCollection.find(query);
             const getOrders = await cursor.toArray();
             res.send(getOrders);
+        });
+
+        // GET to get all orders.
+        app.get("/services", async (req, res) => {
+            const cursor = orderCollection.find({});
+            const services = await cursor.toArray();
+            res.send(services);
         });
 
         app.post("/productAdded", async (req, res) => {
