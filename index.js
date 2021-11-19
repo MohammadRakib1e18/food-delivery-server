@@ -22,10 +22,9 @@ async function run(){
         app.get('/services', async(req, res)=>{
             const cursor = serviceCollection.find({});
             const services = await cursor.toArray();
-            // console.log(services);
-            res.json(services);
+            res.send(services);
         })
-        
+
         const orderCollection = database.collection("order");
 
         // POST API
